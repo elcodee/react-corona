@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+/* font */
+@import url(//fonts.googleapis.com/css?family=Comfortaa);
+
+.font-app {
+   font-family: Comfortaa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* boxdiv */
+.box-div {
+   color: white;
+   background: linear-gradient(13deg, #272f38 14%,#4b617a 73%);
+background: -moz-linear-gradient(13deg, #272f38 14%,#4b617a 73%);
+background: -webkit-linear-gradient(13deg, #272f38 14%,#4b617a 73%);
+border-radius: 10px 10px 10px 10px;
+box-shadow: 2px 2px 15px #000000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+/* animated text */
+.text{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text:before,
+.text:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.text:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
   }
-  to {
-    transform: rotate(360deg);
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+.text:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
   }
 }
